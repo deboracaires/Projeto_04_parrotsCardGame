@@ -1,0 +1,64 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    background-color: #eef9bf;
+    font-family: 'Roboto', sans-serif;
+}
+.nome-jogo{
+    color: #75B79E;
+    font-size: 56px;
+    display: flex;
+    justify-content: center;
+    line-height: 66px;
+    letter-spacing: -0.004em;
+    margin: 40px 0 47px 0;
+}
+.cartas{
+    padding: 0 122px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+
+}
+.carta{
+    width: 117px;
+    height: 146px;
+    margin: 0 34px 34px 0;
+    background-color: #a7e9af;
+    border: 1px solid #99cea8;
+    border-radius: 5px;
+    padding: 24px 7px 22px 10px;
+}
+.carta img{
+    width: 100px;
+    height: 100px;
+    background-color: #a7e9af;
+}
+
+@media (max-width: 620px){
+    body{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .nome-jogo{
+        
+        font-size: 36px;
+        line-height: 42px;
+        text-align: center;
+        letter-spacing: -0.004em;
+        margin: 40px 11px 47px 12px;
+    }
+    .cartas{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        margin-bottom: 34px;
+    }
+    .carta{
+        margin: 0 0 34px 0;;
+    }
+}
