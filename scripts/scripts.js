@@ -6,7 +6,17 @@ numeroCartas = prompt("Deseja jogar com quantas cartas?(digite apenas o número)
 
 if( numeroCartas%2 === 0 && numeroCartas >= 4 && numeroCartas <= 14){
     verificaNumeroCartas = 1;
+    inserirCartas();
 }else{
     alert("Número inválido, tente novamente!");
 }
+}
+
+function inserirCartas(){
+    const ul = document.querySelector("ul");
+    for(let i = 0; i < numeroCartas; i++){
+        ul.innerHTML += `<li class="carta">
+        <img src="/images/carrot.png">
+        </li>`;
+    }
 }
