@@ -15,8 +15,10 @@ if( numeroCartas%2 === 0 && numeroCartas >= 4 && numeroCartas <= 14){
 function inserirCartas(){
     const ul = document.querySelector("ul");
     for(let i = 0; i < numeroCartas; i++){
-        ul.innerHTML += `<li class="carta">
+        ul.innerHTML += `<button class="carta" onclick="virarCarta(this)"><li>
         <img src="/images/carrot.png">
-        </li>`;
+        </li></button>`;
     }
 }
+
+

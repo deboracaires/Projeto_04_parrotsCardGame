@@ -36,6 +36,9 @@ body{
     height: 100px;
     background-color: #a7e9af;
 }
+button:hover{
+    cursor: pointer;
+}
 
 @media (max-width: 620px){
     body{
