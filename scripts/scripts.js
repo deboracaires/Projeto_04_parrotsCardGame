@@ -10,6 +10,9 @@ let versosPossiveis = [
     '/images/unicornparrot.gif'    
 ];
 let versos = [];
+let numeroJogadas = 0;
+let primeiraCarta, segundaCarta;
+let eVirada = false;
 
 
 while(verificaNumeroCartas === 0){
@@ -21,9 +24,6 @@ if( numeroCartas%2 === 0 && numeroCartas >= 4 && numeroCartas <= 14){
     alert("Número inválido, tente novamente!");
 }
 }
-
-//preciso pegar o numero de cartas ddividido por dois e criar um array com o numero de cartas a serem colocadas
-//no meu codigo 
 
 let cont = 0;
 for(let i=0; i < numeroCartas; i++){
@@ -37,17 +37,16 @@ versos.sort(embaralharCartas);
 
 
 const ul = document.querySelector("ul");
-let imagemGif = "";
+
 for(let i = 0; i < numeroCartas; i++){
-    imagemGif = versos[i];
     ul.innerHTML += `
         <li class="vira-carta">
-            <div class="carta">
+            <div class="carta" >
                 <div class="carta-frente">
                     <img src="/images/front.png">
                 </div>
                 <div class="carta-verso">
-                    <img src="`+ imagemGif + `">
+                    <img src="${versos[i]}">
                 </div>
             </div>
         </li>`;
@@ -57,14 +56,50 @@ function embaralharCartas() {
 	return Math.random() - 0.5; 
 }
 
+
 const cartas = document.querySelectorAll("li");
 
 function virarCarta(){
-    this.classList.toggle('virar-carta');
+    this.classList.add('virar-carta');
+
+    if(eVirada === false){
+        eVirada = true;
+        primeiraCarta = this;
+        return;
+    }
+    
+    segundaCarta = this;
+    eVirada = false;
+
+    checarPar();
+
 }
+
+function checarPar(){
+    
+    if(primeiraCarta.lastElementChild.lastElementChild.innerHTML === segundaCarta.lastElementChild.lastElementChild.innerHTML){
+        limparVariaveis();
+        return;
+    }else{
+        desvirarCartas();
+    }
+    
+}
+
+function limparVariaveis(){
+    primeiraCarta.removeEventListener('click', virarCarta);
+    segundaCarta.removeEventListener('click', virarCarta);
+}
+
+function desvirarCartas() {
+       setTimeout(() => {
+         primeiraCarta.classList.remove('virar-carta');
+         segundaCarta.classList.remove('virar-carta');
+       }, 1000);
+}
+
+
 cartas.forEach(carta => carta.addEventListener('click', virarCarta));
-
-
 
 
 
