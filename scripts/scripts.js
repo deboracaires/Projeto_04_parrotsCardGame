@@ -1,6 +1,15 @@
 let verificaNumeroCartas = 0;
 let numeroCartas = 0;
-const cartas = document.querySelectorAll(".carta");
+// var faces = [
+//     getImage("images/bobrossparrot.gif"),
+//     getImage("images/explodyparrot.gif"),
+//     getImage("images/fiestaparrot.gif"),
+//     getImage("images/metalparrot.gif"),
+//     getImage("images/revertitparrot.gif"),
+//     getImage("images/tripletsparrot.gif"),
+//     getImage("images/unicornparrot.gif")    
+// ];
+
 
 while(verificaNumeroCartas === 0){
 numeroCartas = prompt("Deseja jogar com quantas cartas?(digite apenas o número)\n- 4 cartas\n- 6 cartas\n- 8 cartas\n- 10 cartas\n- 12 cartas\n- 14 cartas");
@@ -17,7 +26,7 @@ function inserirCartas(){
     const ul = document.querySelector("ul");
     for(let i = 0; i < numeroCartas; i++){
         ul.innerHTML += `
-        <div class="vira-carta">
+        <li class="vira-carta">
             <div class="carta">
                 <div class="carta-frente">
                     <img src="/images/front.png">
@@ -26,13 +35,15 @@ function inserirCartas(){
                     <img src="/images/bobrossparrot.gif">
                 </div>
             </div>
-        </div>`;
+        </li>`;
     }
 }
-// function virarCarta(){
-//     this.classList.toggle("virar-carta");
-// }
-// cartas.forEach(carta => carta.addEventListener('click', virarCarta))
+const cartas = document.querySelectorAll("li");
+
+function virarCarta(){
+    this.classList.toggle('virar-carta');
+}
+cartas.forEach(carta => carta.addEventListener('click', virarCarta));
 
 
 
