@@ -33,6 +33,9 @@ for(let i=0; i < numeroCartas; i++){
     versos[i] = versosPossiveis[cont];
 }
 
+versos.sort(embaralharCartas);
+
+
 const ul = document.querySelector("ul");
 let imagemGif = "";
 for(let i = 0; i < numeroCartas; i++){
@@ -48,6 +51,10 @@ for(let i = 0; i < numeroCartas; i++){
                 </div>
             </div>
         </li>`;
+}
+
+function embaralharCartas() { 
+	return Math.random() - 0.5; 
 }
 
 const cartas = document.querySelectorAll("li");
