@@ -1,14 +1,15 @@
 let verificaNumeroCartas = 0;
 let numeroCartas = 0;
-// var faces = [
-//     getImage("images/bobrossparrot.gif"),
-//     getImage("images/explodyparrot.gif"),
-//     getImage("images/fiestaparrot.gif"),
-//     getImage("images/metalparrot.gif"),
-//     getImage("images/revertitparrot.gif"),
-//     getImage("images/tripletsparrot.gif"),
-//     getImage("images/unicornparrot.gif")    
-// ];
+let versosPossiveis = [
+    '/images/bobrossparrot.gif',
+    '/images/explodyparrot.gif',
+    '/images/fiestaparrot.gif',
+    '/images/metalparrot.gif',
+    '/images/revertitparrot.gif',
+    '/images/tripletsparrot.gif',
+    '/images/unicornparrot.gif'    
+];
+let versos = [];
 
 
 while(verificaNumeroCartas === 0){
@@ -16,28 +17,39 @@ numeroCartas = prompt("Deseja jogar com quantas cartas?(digite apenas o número)
 
 if( numeroCartas%2 === 0 && numeroCartas >= 4 && numeroCartas <= 14){
     verificaNumeroCartas = 1;
-    inserirCartas();
 }else{
     alert("Número inválido, tente novamente!");
 }
 }
 
-function inserirCartas(){
-    const ul = document.querySelector("ul");
-    for(let i = 0; i < numeroCartas; i++){
-        ul.innerHTML += `
+//preciso pegar o numero de cartas ddividido por dois e criar um array com o numero de cartas a serem colocadas
+//no meu codigo 
+
+let cont = 0;
+for(let i=0; i < numeroCartas; i++){
+    if(i%2 === 0 && i !== 0){
+        cont++;
+    }
+    versos[i] = versosPossiveis[cont];
+}
+
+const ul = document.querySelector("ul");
+let imagemGif = "";
+for(let i = 0; i < numeroCartas; i++){
+    imagemGif = versos[i];
+    ul.innerHTML += `
         <li class="vira-carta">
             <div class="carta">
                 <div class="carta-frente">
                     <img src="/images/front.png">
                 </div>
                 <div class="carta-verso">
-                    <img src="/images/bobrossparrot.gif">
+                    <img src="`+ imagemGif + `">
                 </div>
             </div>
         </li>`;
-    }
 }
+
 const cartas = document.querySelectorAll("li");
 
 function virarCarta(){

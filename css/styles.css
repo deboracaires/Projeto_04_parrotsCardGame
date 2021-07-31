@@ -15,7 +15,7 @@ body{
     margin: 40px 0 47px 0;
 }
 .cartas-conteiner{
-    padding: 0 50px;
+    padding: 0 150px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
