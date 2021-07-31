@@ -14,33 +14,69 @@ body{
     letter-spacing: -0.004em;
     margin: 40px 0 47px 0;
 }
-.cartas{
-    padding: 0 122px;
+.cartas-conteiner{
+    padding: 0 50px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    
-
+    justify-content: space-around;
 }
-.carta{
+.vira-carta{
+    background-color: transparent;
     width: 117px;
     height: 146px;
-    margin: 0 34px 34px 0;
+    border: 1px solid #eef9bf;
+    margin: 15px 10px 34px 10px;
+    
+}
+.carta{
+    width: 100%;
+    height: 100%;
     background-color: #a7e9af;
     border: 1px solid #99cea8;
     border-radius: 5px;
-    padding: 24px 7px 22px 10px;
-}
-.carta img{
-    width: 100px;
-    height: 100px;
-    background-color: #a7e9af;
-}
-button:hover{
-    cursor: pointer;
+    box-shadow: 1px 1px 0 rgba(50, 143, 78, 0.397);
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+    
 }
 
-@media (max-width: 620px){
+.carta-frente{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    align-items: center;
+    padding: 24px 7px 22px 10px;
+}
+.carta-verso{
+    width: 100%;
+    height: 100%;
+    padding: 24px 7px 22px 10px;
+    position: absolute;
+    backface-visibility: hidden;
+    transform: rotateY(180deg);
+}
+.carta-frente img{
+    width: 100px;
+    height: 100px;
+}
+.carta-verso img{
+    width: 100px;
+    height: 100px;
+}
+.carta:active{
+    transform: scale(0.97);
+    transition: transform .2s;
+}
+/* .vira-carta:hover .carta{
+    transform: rotateY(180deg);
+} */
+.virar-carta{
+    transform: rotateY(180deg);
+}
+
+@media (max-width: 610px){
     body{
         display: flex;
         flex-direction: column;
@@ -54,14 +90,8 @@ button:hover{
         letter-spacing: -0.004em;
         margin: 40px 11px 47px 12px;
     }
-    .cartas{
+    .cartas-conteiner{
         display: flex;
         flex-direction: column;
-        align-items: center;
-        padding: 0;
-        margin-bottom: 34px;
-    }
-    .carta{
-        margin: 0 0 34px 0;;
     }
 }
