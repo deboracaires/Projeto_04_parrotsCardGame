@@ -13,10 +13,12 @@ let versos = [];
 let numeroJogadas = 0;
 let primeiraCarta, segundaCarta;
 let eVirada = false;
+let verificaFimJogo = 0;
+
 
 
 while(verificaNumeroCartas === 0){
-numeroCartas = prompt("Deseja jogar com quantas cartas?(digite apenas o número)\n- 4 cartas\n- 6 cartas\n- 8 cartas\n- 10 cartas\n- 12 cartas\n- 14 cartas");
+numeroCartas = Number(prompt("Deseja jogar com quantas cartas?(digite apenas o número)\n- 4 cartas\n- 6 cartas\n- 8 cartas\n- 10 cartas\n- 12 cartas\n- 14 cartas"));
 
 if( numeroCartas%2 === 0 && numeroCartas >= 4 && numeroCartas <= 14){
     verificaNumeroCartas = 1;
@@ -57,11 +59,12 @@ function embaralharCartas() {
 }
 
 
+
 const cartas = document.querySelectorAll("li");
 
 function virarCarta(){
     this.classList.add('virar-carta');
-
+    
     if(eVirada === false){
         eVirada = true;
         primeiraCarta = this;
@@ -72,11 +75,13 @@ function virarCarta(){
     eVirada = false;
 
     checarPar();
+    verificaFimJogo = document.querySelectorAll(".virar-carta").length;
+    setTimeout(verificarFimJogo, 200);
 
 }
 
 function checarPar(){
-    
+    numeroJogadas++;
     if(primeiraCarta.lastElementChild.lastElementChild.innerHTML === segundaCarta.lastElementChild.lastElementChild.innerHTML){
         limparVariaveis();
         return;
@@ -89,6 +94,7 @@ function checarPar(){
 function limparVariaveis(){
     primeiraCarta.removeEventListener('click', virarCarta);
     segundaCarta.removeEventListener('click', virarCarta);
+    
 }
 
 function desvirarCartas() {
@@ -99,7 +105,18 @@ function desvirarCartas() {
 }
 
 
+
 cartas.forEach(carta => carta.addEventListener('click', virarCarta));
+
+
+//preciso verificar se todas as cartas estao viradas
+
+
+function verificarFimJogo(){
+    if(verificaFimJogo === numeroCartas){
+        alert("Você ganhou em " + numeroJogadas + " jogadas!");
+    }
+}
 
 
 
